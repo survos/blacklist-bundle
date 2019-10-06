@@ -1,0 +1,15 @@
+{
+    "name": "lsbproject/blacklist-bundle",
+    "description": "Bundle to simplify blacklist creation",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "victor",
+            "email": "fedorenko22116@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    }
+}
