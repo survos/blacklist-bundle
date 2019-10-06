@@ -1,4 +1,27 @@
+parameters:
+  default_type: ~
+  default_path: ~
+
 services:
   _defaults:
     autowire: true
     autoconfigure: true
+    public: false
+
+  LSBProject\BlacklistBundle\Type\DefaultType: ~
+  LSBProject\BlacklistBundle\Type\TypeInterface: '@LSBProject\BlacklistBundle\Type\DefaultType'
+
+  LSBProject\BlacklistBundle\Entity\BlacklistManager: ~
+  LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface: '@LSBProject\BlacklistBundle\Entity\BlacklistManager'
+
+  LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklistedValidator: ~
+  LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklisted: ~
+
+  LSBProject\BlacklistBundle\Command\AddToBlacklist:
+    tags:
+      - { name: 'console.command' }
+
+  LSBProject\BlacklistBundle\Command\ShowBlacklisted:
+    tags:
+      - { name: 'console.command' }
+

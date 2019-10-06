@@ -1,8 +1,11 @@
 {
     "name": "lsbproject/blacklist-bundle",
-    "description": "Bundle to simplify blacklist creation",
+    "description": "Bundle to simplify blacklist creation using annotations",
     "type": "symfony-bundle",
     "license": "MIT",
+    "version": "1.0.1",
+    "homepage": "https://github.com/22116/blacklist-bundle",
+    "keywords": ["blacklist", "bundle", "symfony"],
     "authors": [
         {
             "name": "victor",
@@ -10,6 +13,31 @@
         }
     ],
     "require": {
-        "php": "^7.1"
-    }
+        "php": "^7.1",
+        "symfony/framework-bundle": "^3.0 || ^4.0",
+        "symfony/validator": "^4.3",
+        "doctrine/common": "^2.3"
+    },
+    "require-dev": {
+        "sensio/framework-extra-bundle": "^5.4",
+        "symfony/class-loader": "^3.4",
+        "symfony/yaml": "^4.3",
+        "doctrine/doctrine-bundle": "^1.11",
+        "doctrine/orm": "^2.6"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "LSBProject\\BlacklistBundle\\": "."
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LSBProject\\BlacklistBundle\\Tests\\": "/Tests/"
+        }
+    },
+    "prefer-stable": true
 }

@@ -2,7 +2,7 @@
 
 namespace LSBProject\BlacklistBundle\DependencyInjection;
 
-use LSBProject\Type\DefaultType;
+use LSBProject\BlacklistBundle\Type\DefaultType;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -26,16 +26,17 @@ class Configuration implements ConfigurationInterface
         // more information on that topic.
 
         $rootNode
-            ->addDefaultChildrenIfNoneSet()
             ->children()
                 ->scalarNode('default_type')
-                ->cannotBeEmpty()
-                ->defaultValue(DefaultType::class)
+                    ->cannotBeEmpty()
+                    ->defaultValue(DefaultType::class)
+                    ->end()
                 ->end()
             ->children()
                 ->scalarNode('default_path')
-                ->cannotBeEmpty()
-                ->defaultValue('BlacklistType')
+                    ->cannotBeEmpty()
+                    ->defaultValue('%kernel.project_dir%/src/BlacklistType')
+                    ->end()
                 ->end();
 
         return $treeBuilder;

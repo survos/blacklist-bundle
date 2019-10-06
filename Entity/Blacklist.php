@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\Blacklist\Entity;
+namespace LSBProject\BlacklistBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(uniqueConstraints={
  *     @ORM\UniqueConstraint(name="assignment_unique", columns={"type", "value"})
  * })
- * @ORM\Entity(repositoryClass="LSBProject\Blacklist\Repository\BlacklistRepository")
+ * @ORM\Entity(repositoryClass="LSBProject\BlacklistBundle\Repository\BlacklistRepository")
  * @codeCoverageIgnore
  */
 class Blacklist
@@ -52,26 +52,5 @@ class Blacklist
     public function getType(): string
     {
         return $this->type ?? '';
-    }
-
-    public function setId(int $id): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    public function setValue(string $value): self
-    {
-        $this->value = $value;
-
-        return $this;
     }
 }

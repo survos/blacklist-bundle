@@ -2,6 +2,8 @@
 
 namespace LSBProject\BlacklistBundle\DependencyInjection;
 
+use LSBProject\BlacklistBundle\Entity\Blacklist;
+use LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklisted;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -21,6 +23,14 @@ class LSBProjectBlacklistExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+
+        $container->setParameter('default_type', $config['default_type']);
+        $container->setParameter('default_path', $config['default_path']);
+
+        $this->addAnnotatedClassesToCompile([
+            IsNotBlacklisted::class,
+            Blacklist::class,
+        ]);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

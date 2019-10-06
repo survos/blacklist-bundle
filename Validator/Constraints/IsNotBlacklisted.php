@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\Blacklist\Validator\Constraints;
+namespace LSBProject\BlacklistBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 

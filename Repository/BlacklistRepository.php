@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\Blacklist\Repository;
+namespace LSBProject\BlacklistBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

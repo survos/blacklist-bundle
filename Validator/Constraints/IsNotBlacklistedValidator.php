@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\Blacklist\Validator\Constraints;
+namespace LSBProject\BlacklistBundle\Validator\Constraints;
 
-use LSBProject\Blacklist\Entity\BlacklistManagerInterface;
-use LSBProject\Type\TypeInterface;
+use LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface;
+use LSBProject\BlacklistBundle\Type\TypeInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -36,6 +36,12 @@ class IsNotBlacklistedValidator extends ConstraintValidator
         }
 
         if ($this->type->supports($constraint->type)) {
+            if (!$this->type->satisfies($value)) {
+                throw new \InvalidArgumentException(
+                    sprintf("Value '%s' doesn't satisfy '%s' type", $value, $constraint->type)
+                );
+            }
+
             $this->type->validate($value, $constraint, $this->context, $this->blacklistManager);
         }
     }

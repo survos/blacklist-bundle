@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace LSBProject\Type;
+namespace LSBProject\BlacklistBundle\Type;
 
-use LSBProject\Blacklist\Entity\BlacklistManagerInterface;
+use LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -15,6 +15,14 @@ interface TypeInterface
      * @return bool
      */
     public function supports(string $type): bool;
+
+    /**
+     * Checks if value is satisfied by current type
+     *
+     * @param string $value
+     * @return bool
+     */
+    public function satisfies(string $value): bool;
 
     /**
      * Validates current value.

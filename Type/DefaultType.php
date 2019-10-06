@@ -1,11 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace LSBProject\Type;
+namespace LSBProject\BlacklistBundle\Type;
 
-use LSBProject\Blacklist\Entity\BlacklistManagerInterface;
+use LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
+/**
+ * Default type used to be a fallback type for validator
+ *
+ * Class DefaultType
+ * @package LSBProject\BlacklistBundle\Type
+ */
 class DefaultType implements TypeInterface
 {
     /** @var BlacklistManagerInterface */
@@ -16,11 +22,25 @@ class DefaultType implements TypeInterface
         $this->blacklistManager = $blacklistManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function satisfies(string $value): bool
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function supports(string $type): bool
     {
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function validate(
         string $value,
         Constraint $constraint,
