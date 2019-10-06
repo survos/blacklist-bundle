@@ -1,12 +1,18 @@
-parameters:
-  default_type: ~
-  default_path: ~
-
 services:
   _defaults:
     autowire: true
     autoconfigure: true
     public: false
+
+  lsbproject.default_type:
+    class: '%default_type%'
+
+  lsbproject.type_extractor:
+    class: LSBProject\BlacklistBundle\Utils\TypeExtractor
+    arguments:
+      $defaultType: '@lsbproject.default_type'
+
+  LSBProject\BlacklistBundle\Utils\TypeExtractorInterface: '@lsbproject.type_extractor'
 
   LSBProject\BlacklistBundle\Type\DefaultType: ~
   LSBProject\BlacklistBundle\Type\TypeInterface: '@LSBProject\BlacklistBundle\Type\DefaultType'
@@ -24,4 +30,12 @@ services:
   LSBProject\BlacklistBundle\Command\ShowBlacklisted:
     tags:
       - { name: 'console.command' }
+
+  LSBProject\BlacklistBundle\Type\EmailType:
+    tags:
+      - { name: 'lsbproject.blacklist.type' }
+
+  LSBProject\BlacklistBundle\Type\IpType:
+    tags:
+      - { name: 'lsbproject.blacklist.type' }
 

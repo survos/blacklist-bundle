@@ -2,15 +2,36 @@
 
 namespace LSBProject\BlacklistBundle\Utils;
 
+use LSBProject\BlacklistBundle\Type\TypeInterface;
+
 class TypeExtractor implements TypeExtractorInterface
 {
+    /** @var TypeInterface[] */
+    private $types;
+
+    /** @var TypeInterface */
+    private $defaultType;
+
+    public function __construct(array $types, TypeInterface $defaultType)
+    {
+        $this->types = $types;
+        $this->defaultType = $defaultType;
+    }
+
     public function extract(): array
     {
-        // TODO: Implement extract() method.
+        return $this->types;
+    }
+
+    public function extractDefault(): TypeInterface
+    {
+        return $this->defaultType;
     }
 
     public function extractSupported(string $type): array
     {
-        // TODO: Implement extractSupported() method.
+        return array_filter($this->types, function (TypeInterface $typeObject) use ($type) {
+            return $typeObject->supports($type);
+        });
     }
 }

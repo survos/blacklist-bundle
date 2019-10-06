@@ -31,12 +31,6 @@ class Configuration implements ConfigurationInterface
                     ->cannotBeEmpty()
                     ->defaultValue(DefaultType::class)
                     ->end()
-                ->end()
-            ->children()
-                ->scalarNode('default_path')
-                    ->cannotBeEmpty()
-                    ->defaultValue('%kernel.project_dir%/src/BlacklistType')
-                    ->end()
                 ->end();
 
         return $treeBuilder;

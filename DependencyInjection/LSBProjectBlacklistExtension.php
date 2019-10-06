@@ -25,7 +25,6 @@ class LSBProjectBlacklistExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('default_type', $config['default_type']);
-        $container->setParameter('default_path', $config['default_path']);
 
         $this->addAnnotatedClassesToCompile([
             IsNotBlacklisted::class,
