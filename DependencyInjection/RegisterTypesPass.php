@@ -4,6 +4,7 @@ namespace LSBProject\BlacklistBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 
 class RegisterTypesPass implements CompilerPassInterface
 {
@@ -11,6 +12,8 @@ class RegisterTypesPass implements CompilerPassInterface
     {
         $types = $container->findTaggedServiceIds('lsbproject.blacklist.type');
         $extractor = $container->getDefinition('lsbproject.type_extractor');
-        $extractor->setArgument('$types', $types);
+        $extractor->setArgument('$types', array_map(function (string $service) {
+            return new Reference($service);
+        }, array_keys($types)));
     }
 }

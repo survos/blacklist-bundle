@@ -14,14 +14,6 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  */
 class DefaultType implements TypeInterface
 {
-    /** @var BlacklistManagerInterface */
-    private $blacklistManager;
-
-    public function __construct(BlacklistManagerInterface $blacklistManager)
-    {
-        $this->blacklistManager = $blacklistManager;
-    }
-
     /**
      * {@inheritDoc}
      */
