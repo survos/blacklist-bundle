@@ -2,8 +2,8 @@
 
 namespace LSBProject\BlacklistBundle\Entity;
 
-use LSBProject\BlacklistBundle\Repository\BlacklistRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use LSBProject\BlacklistBundle\Repository\BlacklistRepository;
 
 class BlacklistManager implements BlacklistManagerInterface
 {

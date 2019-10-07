@@ -3,7 +3,7 @@
     "description": "Bundle to simplify blacklist creation using annotations",
     "type": "symfony-bundle",
     "license": "MIT",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "homepage": "https://github.com/22116/blacklist-bundle",
     "keywords": ["blacklist", "bundle", "symfony"],
     "authors": [
@@ -23,7 +23,13 @@
         "symfony/class-loader": "^3.4",
         "symfony/yaml": "^4.3",
         "doctrine/doctrine-bundle": "^1.11",
-        "doctrine/orm": "^2.6"
+        "doctrine/orm": "^2.6",
+        "symfony/phpunit-bridge": "^4.3",
+        "slevomat/coding-standard": "~4.0",
+        "squizlabs/php_codesniffer": "*",
+        "phpstan/phpstan": "^0.10.1",
+        "phpstan/phpstan-doctrine": "^0.10.0",
+        "phpstan/phpstan-phpunit": "^0.10.0"
     },
     "minimum-stability": "stable",
     "autoload": {

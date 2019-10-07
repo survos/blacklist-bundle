@@ -1,0 +1,25 @@
+includes:
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+
+parameters:
+
+    paths:
+        - .
+
+    level: 7
+
+    tmpDir: "%rootDir%/../../../phpstan"
+
+    excludes_analyse:
+        - "%rootDir%/../../../vendor"
+        - "%rootDir%/../../../phpstan"
+        - "%rootDir%/../../../Validator/Constraints/*"
+        - "%rootDir%/../../../DependencyInjection/*"
+
+    autoload_files:
+        - vendor/bin/.phpunit/phpunit-7.4/vendor/autoload.php
+
+    ignoreErrors:
+        - '#Access to an undefined property Symfony\\Component\\Validator\\Constraint(.+)#'
+        - '#Property (.+) \((.+)Repository\) does not accept Doctrine\\ORM\\EntityRepository(.+).#'

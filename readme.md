@@ -47,9 +47,6 @@ return [
 Usage
 =====
 
-Types
------
-
 ```php
     use LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklisted;
 
@@ -73,6 +70,9 @@ Types
      */
     private $email;
 ```
+
+Types
+-----
 
 Bundle tries to validate exact blacklist type with validator types.
 You can implement your own type or use default one.

@@ -3,6 +3,7 @@
 namespace LSBProject\BlacklistBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(uniqueConstraints={
@@ -22,13 +23,15 @@ class Blacklist
     protected $id;
 
     /**
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      * @var string|null
      */
     protected $type;
 
     /**
      * @ORM\Column(type="string", nullable=false)
+     * @Assert\NotBlank()
      * @var string|null
      */
     protected $value;

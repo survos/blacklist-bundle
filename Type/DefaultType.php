@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace LSBProject\BlacklistBundle\Type;
 
@@ -10,29 +10,21 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  * Default type used to be a fallback type for validator
  *
  * Class DefaultType
+ *
  * @package LSBProject\BlacklistBundle\Type
  */
 class DefaultType implements TypeInterface
 {
-    /**
-     * {@inheritDoc}
-     */
     public function satisfies(string $value): bool
     {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function supports(string $type): bool
     {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function validate(
         string $value,
         Constraint $constraint,

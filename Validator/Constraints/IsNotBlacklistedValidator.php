@@ -42,7 +42,7 @@ class IsNotBlacklistedValidator extends ConstraintValidator
             $this->validateType($type, $constraint, $value);
         }
 
-        if (count($types) === 0) {
+        if (0 === count($types)) {
             $this->validateType(
                 $this->typeExtractor->extractDefault(),
                 $constraint,
