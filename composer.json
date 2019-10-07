@@ -3,7 +3,6 @@
     "description": "Bundle to simplify blacklist creation using annotations",
     "type": "symfony-bundle",
     "license": "MIT",
-    "version": "1.0.2",
     "homepage": "https://github.com/22116/blacklist-bundle",
     "keywords": ["blacklist", "bundle", "symfony"],
     "authors": [
@@ -15,7 +14,7 @@
     "require": {
         "php": "^7.1",
         "symfony/framework-bundle": "^3.0 || ^4.0",
-        "symfony/validator": "^4.3",
+        "symfony/validator": "^3.0 || ^4.0",
         "doctrine/common": "^2.3"
     },
     "require-dev": {

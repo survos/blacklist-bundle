@@ -3,6 +3,7 @@
     <file>.</file>
 
     <exclude-pattern>/vendor</exclude-pattern>
+    <exclude-pattern>/phpstan</exclude-pattern>
 
     <rule ref="PSR2" />
     <rule ref="PSR1">
