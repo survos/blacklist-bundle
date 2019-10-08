@@ -44,6 +44,12 @@ return [
 ];
 ```
 
+### Step 3: Update database schema
+
+```console
+php bin/console doctrine:schema:update --force
+```
+
 Usage
 =====
 
