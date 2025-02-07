@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\BlacklistBundle\src\Validator\Constraints;
+namespace LSBProject\BlacklistBundle\Validator\Constraints;
 
-use LSBProject\BlacklistBundle\src\Entity\BlacklistManagerInterface;
-use LSBProject\BlacklistBundle\src\Type\TypeInterface;
-use LSBProject\BlacklistBundle\src\Utils\TypeExtractorInterface;
+use LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface;
+use LSBProject\BlacklistBundle\Type\TypeInterface;
+use LSBProject\BlacklistBundle\Utils\TypeExtractorInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;

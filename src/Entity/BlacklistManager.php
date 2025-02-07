@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\BlacklistBundle\src\Entity;
+namespace LSBProject\BlacklistBundle\Entity;
 
 use Doctrine\ORM\EntityManagerInterface;
-use LSBProject\BlacklistBundle\src\Repository\BlacklistRepository;
+use LSBProject\BlacklistBundle\Repository\BlacklistRepository;
 
 class BlacklistManager implements BlacklistManagerInterface
 {

@@ -54,7 +54,7 @@ Usage
 =====
 
 ```php
-    use LSBProject\BlacklistBundle\src\Validator\Constraints\IsNotBlacklisted;
+    use LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklisted;
 
     //...
 
@@ -87,8 +87,8 @@ To add your own validator just implement `TypeInterface`
 e.g.
 
 ```php
-use LSBProject\BlacklistBundle\src\Type\TypeInterface;
-use LSBProject\BlacklistBundle\src\Type\DefaultType;
+use LSBProject\BlacklistBundle\Type\TypeInterface;
+use LSBProject\BlacklistBundle\Type\DefaultType;
 
 class EmailType extends DefaultType implements TypeInterface
 {
@@ -114,7 +114,7 @@ and tag it with `lsbproject.blacklist.type`
 
 ```yaml
   email_blacklist_type:
-    class: 'LSBProject\BlacklistBundle\src\Type\EmailType'
+    class: 'LSBProject\BlacklistBundle\Type\EmailType'
     tags:
       - { name: 'lsbproject.blacklist.type' }
 ```
@@ -127,7 +127,7 @@ You can override it in config:
 
 ```yaml
     lsb_project_blacklist:
-      default_type: LSBProject\BlacklistBundle\src\Type\DefaultType
+      default_type: LSBProject\BlacklistBundle\Type\DefaultType
 ```
 
 Validate storage

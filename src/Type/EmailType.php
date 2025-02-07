@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\BlacklistBundle\src\Type;
+namespace LSBProject\BlacklistBundle\Type;
 
 class EmailType extends DefaultType implements TypeInterface
 {

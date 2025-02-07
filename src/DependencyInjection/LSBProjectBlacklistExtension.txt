@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\BlacklistBundle\src\DependencyInjection;
+namespace LSBProject\BlacklistBundle\DependencyInjection;
 
-use LSBProject\BlacklistBundle\src\Entity\Blacklist;
-use LSBProject\BlacklistBundle\src\Validator\Constraints\IsNotBlacklisted;
+use LSBProject\BlacklistBundle\Entity\Blacklist;
+use LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklisted;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;

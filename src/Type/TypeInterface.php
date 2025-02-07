@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\BlacklistBundle\src\Type;
+namespace LSBProject\BlacklistBundle\Type;
 
-use LSBProject\BlacklistBundle\src\Entity\BlacklistManagerInterface;
+use LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 

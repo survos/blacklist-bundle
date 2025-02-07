@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\BlacklistBundle\src\Entity;
+namespace LSBProject\BlacklistBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;

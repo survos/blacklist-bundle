@@ -7,7 +7,7 @@ services:
     class: '%default_type%'
 
   lsbproject.type_extractor:
-    class: LSBProject\BlacklistBundle\src\Utils\TypeExtractor
+    class: LSBProject\BlacklistBundle\Utils\TypeExtractor
     arguments:
       $defaultType: '@lsbproject.default_type'
 
@@ -15,7 +15,7 @@ services:
   LSBProject\BlacklistBundle\Type\TypeInterface: '@lsbproject.default_type'
 
   LSBProject\BlacklistBundle\Entity\BlacklistManager: ~
-  LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface: '@LSBProject\BlacklistBundle\src\Entity\BlacklistManager'
+  LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface: '@LSBProject\BlacklistBundle\Entity\BlacklistManager'
 
   LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklistedValidator: ~
   LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklisted: ~
@@ -29,12 +29,12 @@ services:
       - { name: 'console.command' }
 
   LSBProject\BlacklistBundle\Type\EmailType:
-    class: 'LSBProject\BlacklistBundle\src\Type\EmailType'
+    class: 'LSBProject\BlacklistBundle\Type\EmailType'
     tags:
       - { name: 'lsbproject.blacklist.type' }
 
   LSBProject\BlacklistBundle\Type\IpType:
-    class: 'LSBProject\BlacklistBundle\src\Type\IpType'
+    class: 'LSBProject\BlacklistBundle\Type\IpType'
     tags:
       - { name: 'lsbproject.blacklist.type' }
 

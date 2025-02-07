@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\BlacklistBundle\src\Utils;
+namespace LSBProject\BlacklistBundle\Utils;
 
-use LSBProject\BlacklistBundle\src\Type\TypeInterface;
+use LSBProject\BlacklistBundle\Type\TypeInterface;
 
 class TypeExtractor implements TypeExtractorInterface
 {

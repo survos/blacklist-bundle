@@ -1,15 +1,17 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\BlacklistBundle\src\Command;
+namespace LSBProject\BlacklistBundle\Command;
 
-use LSBProject\BlacklistBundle\src\Entity\Blacklist;
-use LSBProject\BlacklistBundle\src\Entity\BlacklistManagerInterface;
+use LSBProject\BlacklistBundle\Entity\Blacklist;
+use LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand('survos:blacklist:show', 'List blacklisted entities')]
 class ShowBlacklisted extends Command
 {
     public function __construct(private readonly BlacklistManagerInterface $blacklistManager)
@@ -19,8 +21,7 @@ class ShowBlacklisted extends Command
 
     protected function configure(): void
     {
-        $this->setName('lsbproject:blacklist:show')
-            ->setDescription('Shows blacklisted')
+        $this
             ->addArgument('type', InputArgument::OPTIONAL, 'Blacklist type, e.g. "email"');
     }
 
@@ -36,9 +37,10 @@ class ShowBlacklisted extends Command
         if (!$list) {
             $style->success("No entries found");
 
-            return;
         }
 
         $style->table(['type', 'value'], array_map(fn(Blacklist $blacklist) => [$blacklist->getType(), $blacklist->getValue()], $list));
+
+        return self::SUCCESS;
     }
 }

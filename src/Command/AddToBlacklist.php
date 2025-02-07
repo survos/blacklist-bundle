@@ -1,14 +1,16 @@
 <?php declare(strict_types = 1);
 
-namespace LSBProject\BlacklistBundle\src\Command;
+namespace LSBProject\BlacklistBundle\Command;
 
-use LSBProject\BlacklistBundle\src\Entity\BlacklistManagerInterface;
+use LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand('survos:blacklist:add', 'Add data to blacklisted')]
 class AddToBlacklist extends Command
 {
     public function __construct(private readonly BlacklistManagerInterface $blacklistManager)
@@ -18,8 +20,7 @@ class AddToBlacklist extends Command
 
     protected function configure(): void
     {
-        $this->setName('lsbproject:blacklist:add')
-            ->setDescription('Add row to blacklisted')
+        $this
             ->addArgument('type', InputArgument::REQUIRED, 'Blacklist type, e.g. "token"')
             ->addArgument('value', InputArgument::REQUIRED, 'Value to be blocked');
     }
@@ -34,7 +35,7 @@ class AddToBlacklist extends Command
 
         $this->blacklistManager->addToBlacklist($value, $type);
 
-        (new SymfonyStyle($input, $output))->success("Added successfuly");
+        (new SymfonyStyle($input, $output))->success("Added $type $value");
 
         return self::SUCCESS;
     }

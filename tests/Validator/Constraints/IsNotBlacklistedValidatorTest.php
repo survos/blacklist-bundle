@@ -2,11 +2,11 @@
 
 namespace LSBProject\BlacklistBundle\Tests\Validator\Constraints;
 
-use LSBProject\BlacklistBundle\src\Entity\BlacklistManagerInterface;
-use LSBProject\BlacklistBundle\src\Type\TypeInterface;
-use LSBProject\BlacklistBundle\src\Utils\TypeExtractor;
-use LSBProject\BlacklistBundle\src\Validator\Constraints\IsNotBlacklisted;
-use LSBProject\BlacklistBundle\src\Validator\Constraints\IsNotBlacklistedValidator;
+use LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface;
+use LSBProject\BlacklistBundle\Type\TypeInterface;
+use LSBProject\BlacklistBundle\Utils\TypeExtractor;
+use LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklisted;
+use LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklistedValidator;
 use PHPUnit\Framework\MockObject\Matcher\InvokedCount;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Context\ExecutionContextInterface as ExecutionContextInterfaceAlias;
