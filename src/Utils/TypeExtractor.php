@@ -6,16 +6,12 @@ use LSBProject\BlacklistBundle\src\Type\TypeInterface;
 
 class TypeExtractor implements TypeExtractorInterface
 {
-    /** @var TypeInterface[] */
-    private $types;
-
-    /** @var TypeInterface */
-    private $defaultType;
-
-    public function __construct(array $types, TypeInterface $defaultType)
+    public function __construct(
+        /** @var TypeInterface[] */
+        private readonly array $types,
+        private readonly TypeInterface $defaultType
+    )
     {
-        $this->types = $types;
-        $this->defaultType = $defaultType;
     }
 
     public function extract(): array
@@ -30,8 +26,6 @@ class TypeExtractor implements TypeExtractorInterface
 
     public function extractSupported(string $type): array
     {
-        return array_filter($this->types, function (TypeInterface $typeObject) use ($type) {
-            return $typeObject->supports($type);
-        });
+        return array_filter($this->types, fn(TypeInterface $typeObject) => $typeObject->supports($type));
     }
 }

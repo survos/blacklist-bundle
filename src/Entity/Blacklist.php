@@ -6,34 +6,33 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Table(uniqueConstraints={
- *     @ORM\UniqueConstraint(name="assignment_unique", columns={"type", "value"})
- * })
- * @ORM\Entity(repositoryClass="LSBProject\BlacklistBundle\Repository\BlacklistRepository")
  * @codeCoverageIgnore
  */
+#[ORM\Entity(repositoryClass: \LSBProject\BlacklistBundle\Repository\BlacklistRepository::class)]
+#[ORM\Table]
+#[ORM\UniqueConstraint(name: 'assignment_unique', columns: ['type', 'value'])]
 class Blacklist
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
      * @var int
      */
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    #[ORM\Column(type: 'integer')]
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\NotBlank()
      * @var string|null
      */
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
+    #[Assert\NotBlank]
     protected $type;
 
     /**
-     * @ORM\Column(type="string", nullable=false)
-     * @Assert\NotBlank()
      * @var string|null
      */
+    #[ORM\Column(type: 'string', nullable: false)]
+    #[Assert\NotBlank]
     protected $value;
 
     public function __construct(string $value, string $type)

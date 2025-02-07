@@ -11,18 +11,8 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 class IsNotBlacklistedValidator extends ConstraintValidator
 {
-    /** @var BlacklistManagerInterface */
-    private $blacklistManager;
-
-    /** @var TypeExtractorInterface */
-    private $typeExtractor;
-
-    public function __construct(
-        BlacklistManagerInterface $blacklistManager,
-        TypeExtractorInterface $typeExtractor
-    ) {
-        $this->blacklistManager = $blacklistManager;
-        $this->typeExtractor = $typeExtractor;
+    public function __construct(private readonly BlacklistManagerInterface $blacklistManager, private readonly TypeExtractorInterface $typeExtractor)
+    {
     }
 
     /**

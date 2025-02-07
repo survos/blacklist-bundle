@@ -12,13 +12,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class ShowBlacklisted extends Command
 {
-    /** @var BlacklistManagerInterface */
-    private $blacklistManager;
-
-    public function __construct(BlacklistManagerInterface $blacklistManager)
+    public function __construct(private readonly BlacklistManagerInterface $blacklistManager)
     {
-        $this->blacklistManager = $blacklistManager;
-
         parent::__construct();
     }
 
@@ -44,8 +39,6 @@ class ShowBlacklisted extends Command
             return;
         }
 
-        $style->table(['type', 'value'], array_map(function (Blacklist $blacklist) {
-            return [$blacklist->getType(), $blacklist->getValue()];
-        }, $list));
+        $style->table(['type', 'value'], array_map(fn(Blacklist $blacklist) => [$blacklist->getType(), $blacklist->getValue()], $list));
     }
 }

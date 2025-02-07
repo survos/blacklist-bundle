@@ -11,13 +11,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class AddToBlacklist extends Command
 {
-    /** @var BlacklistManagerInterface */
-    private $blacklistManager;
-
-    public function __construct(BlacklistManagerInterface $blacklistManager)
+    public function __construct(private readonly BlacklistManagerInterface $blacklistManager)
     {
-        $this->blacklistManager = $blacklistManager;
-
         parent::__construct();
     }
 

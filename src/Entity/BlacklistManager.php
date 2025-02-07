@@ -10,12 +10,8 @@ class BlacklistManager implements BlacklistManagerInterface
     /** @var BlacklistRepository */
     private $repository;
 
-    /** @var EntityManagerInterface */
-    private $em;
-
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(private readonly EntityManagerInterface $em)
     {
-        $this->em = $em;
         $this->repository = $this->em->getRepository(Blacklist::class);
     }
 
