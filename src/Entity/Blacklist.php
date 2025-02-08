@@ -3,21 +3,23 @@
 namespace LSBProject\BlacklistBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use LSBProject\BlacklistBundle\Repository\BlacklistRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @codeCoverageIgnore
  */
-#[ORM\Entity(repositoryClass: \LSBProject\BlacklistBundle\Repository\BlacklistRepository::class)]
+#[ORM\Entity(repositoryClass: BlacklistRepository::class)]
 #[ORM\Table]
 #[ORM\UniqueConstraint(name: 'assignment_unique', columns: ['type', 'value'])]
+// should values be indexed, for faster lookup
 class Blacklist
 {
     /**
      * @var int
      */
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    #[ORM\GeneratedValue()]
     #[ORM\Column(type: 'integer')]
     protected $id;
 
@@ -26,7 +28,7 @@ class Blacklist
      */
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
     #[Assert\NotBlank]
-    protected $type;
+    protected string $type;
 
     /**
      * @var string|null

@@ -40,7 +40,7 @@ class LSBProjectBlacklistBundle extends AbstractBundle implements CompilerPassIn
             ->setAutoconfigured(true)
             ->setAutowired(true);
 
-        // @todo: UserAgent type
+        // @todo: UserAgent type?
         foreach ([
                      EmailType::class,
                      IPType::class,

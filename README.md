@@ -1,57 +1,32 @@
-# LSBProjectBlacklistBundle
-Flexible bundle to handle blacklist with annotations. 
-Highly inspired by https://github.com/AntoineLemaire/BlacklistBundle
+# BadBotBundle
+
+Flexible bundle to handle bad bots
+
+Highly inspired by  lsbproject/blacklist-bundle https://github.com/AntoineLemaire/BlacklistBundle
 
 Installation
 ============
 
-Applications that use Symfony Flex
-----------------------------------
-
-Open a command console, enter your project directory and execute:
-
 ```console
-$ composer require lsbproject/blacklist-bundle
+composer require survos/bad-bot-bundle
 ```
 
-Applications that don't use Symfony Flex
-----------------------------------------
-
-### Step 1: Download the Bundle
-
-Open a command console, enter your project directory and execute the
-following command to download the latest stable version of this bundle:
+### Update database schema
 
 ```console
-$ composer require lsbproject/blacklist-bundle
-```
-
-This command requires you to have Composer installed globally, as explained
-in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
-of the Composer documentation.
-
-### Step 2: Enable the Bundle
-
-Then, enable the bundle by adding it to the list of registered bundles
-in the `config/bundles.php` file of your project:
-
-```php
-// config/bundles.php
-
-return [
-    // ...
-    LSBProject\BlacklistBundle\LSBProjectBlacklistBundle::class => ['all' => true],
-];
-```
-
-### Step 3: Update database schema
-
-```console
-php bin/console doctrine:schema:update --force
+bin/console doctrine:schema:update --force
+bin/console bot:populate https://github.com/mitchellkrogza/apache-ultimate-bad-bot-blocker/raw/refs/heads/master/_generator_lists/bad-ip-addresses.list
 ```
 
 Usage
 =====
+
+@todo: https://github.com/mitchellkrogza/apache-ultimate-bad-bot-blocker
+
+
+@todo: refactor with annotations.
+
+Really this part could be a generic KeyValuesBundle, e.g. $kvManager->list('ip')
 
 ```php
     use LSBProject\BlacklistBundle\Validator\Constraints\IsNotBlacklisted;

@@ -4,15 +4,16 @@ namespace LSBProject\BlacklistBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 
+#[\Attribute(\Attribute::TARGET_PROPERTY)]
 /** @Annotation */
 class IsNotBlacklisted extends Constraint
 {
     /** @var string */
-    public $type;
+    public string $type;
 
     /** @var bool */
-    public $caseSensetive = true;
+    public bool $caseSensitive = true;
 
     /** @var string */
-    public $message = 'This value is blacklisted';
+    public string $message = 'This value is blacklisted';
 }

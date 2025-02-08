@@ -31,7 +31,7 @@ class DefaultType implements TypeInterface
         ExecutionContextInterface &$context,
         BlacklistManagerInterface $manager
     ): void {
-        if ($manager->isBlacklisted($value, $constraint->type, $constraint->caseSensetive)) {
+        if ($manager->isBlacklisted($value, $constraint->type, $constraint->caseSensitive)) {
             $context->buildViolation($constraint->message)->addViolation();
         }
     }
