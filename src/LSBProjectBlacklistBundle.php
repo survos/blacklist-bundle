@@ -6,6 +6,7 @@ use LSBProject\BlacklistBundle\Command\AddToBlacklist;
 use LSBProject\BlacklistBundle\Command\ShowBlacklisted;
 use LSBProject\BlacklistBundle\Entity\BlacklistManager;
 use LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface;
+use LSBProject\BlacklistBundle\EventListener\BeforeRequestListener;
 use LSBProject\BlacklistBundle\Type\DefaultType;
 use LSBProject\BlacklistBundle\Type\EmailType;
 use LSBProject\BlacklistBundle\Type\IpType;
@@ -39,6 +40,12 @@ class LSBProjectBlacklistBundle extends AbstractBundle implements CompilerPassIn
             ->setPublic(true)
             ->setAutoconfigured(true)
             ->setAutowired(true);
+
+        $builder->autowire(BeforeRequestListener::class)
+            ->setPublic(true)
+            ->setAutoconfigured(true)
+            ->setAutowired(true);
+
 
         // @todo: UserAgent type?
         foreach ([
