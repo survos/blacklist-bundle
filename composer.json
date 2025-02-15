@@ -1,15 +1,11 @@
 {
-    "name": "survos/blacklist-bundle",
-    "description": "Bundle to simplify blacklist creation using annotations",
+    "name": "survos/bot-blockers-bundle",
+    "description": "Bundle to track and block bots that are probing the site",
     "type": "symfony-bundle",
     "license": "MIT",
-    "homepage": "https://github.com/survos/blacklist-bundle",
-    "keywords": ["blacklist", "bundle", "symfony"],
+    "homepage": "https://github.com/survos/SurvosBotBlockerBundle",
+    "keywords": ["blacklist", "bundle", "symfony", "bot", "blocker"],
     "authors": [
-        {
-            "name": "victor",
-            "email": "fedorenko22116@gmail.com"
-        },
         {
             "name": "Tac Tacelosky",
             "email": "tacman@gmail.com"
@@ -17,8 +13,10 @@
     ],
     "require": {
         "php": "^8.1",
-        "symfony/framework-bundle": "^6.4 || ^7.1",
-        "symfony/validator": "^6.4 || ^7.1"
+        "symfony/config": "^6.4 || ^7.1",
+        "symfony/dependency-injection": "^6.4 || ^7.1",
+        "symfony/http-kernel": "^6.4 || ^7.1",
+        "survos/key-value-bundle": "^1.5"
     },
     "require-dev": {
         "symfony/yaml": "^6.4 || ^7.1",
@@ -26,17 +24,18 @@
         "doctrine/orm": "^2.6|^3.0",
         "symfony/phpunit-bridge": "^6.4 || ^7.1",
         "phpstan/phpstan": "^2.1",
-        "rector/rector": "^2.0"
+        "rector/rector": "^2.0",
+        "inspector-apm/inspector-symfony": "^1.8"
     },
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "LSBProject\\BlacklistBundle\\": "src/"
+            "Survos\\BotBlockerBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LSBProject\\BlacklistBundle\\Tests\\": "/tests/"
+            "Survos\\BotBlockerBundle\\Tests\\": "/tests/"
         }
     },
 
@@ -52,5 +51,10 @@
         "show-coverage": "php -S localhost:9004 -t=html"
     },
 
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "endroid/installer": true
+        }
+    }
 }

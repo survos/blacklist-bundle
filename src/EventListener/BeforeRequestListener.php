@@ -1,26 +1,12 @@
 <?php
 
-namespace LSBProject\BlacklistBundle\EventListener;
+namespace Survos\BotBlockerBundle\EventListener;
 
-use App\Doctrine\AccessFilter;
-use App\Doctrine\ProjectFilter;
-use App\Entity\Field\CategoryField;
-use App\Entity\Field\Field;
-use App\Entity\Instance;
-use App\Entity\Member;
-use App\Entity\Owner;
-use App\Entity\OwnerMember;
-use App\Entity\Project;
-use App\Service\ApplicationGlobals;
-use App\Service\ProjectService;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 use Inspector\Inspector;
 use Inspector\Symfony\Bundle\Listeners\InspectorAwareTrait;
-use LSBProject\BlacklistBundle\Entity\BlacklistManager;
-use LSBProject\BlacklistBundle\Entity\BlacklistManagerInterface;
+use Survos\KeyValueBundle\Entity\KeyValueManagerInterface;
+
 use Psr\Log\LoggerInterface;
-use Survos\BootstrapBundle\Event\KnpMenuEvent;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -30,17 +16,15 @@ use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Uid\Uuid;
 
 class BeforeRequestListener
 {
 //    use InspectorAwareTrait;
     public function __construct(
-        private BlacklistManagerInterface $blacklistManager,
+        private KeyValueManagerInterface $kvManager,
         private readonly RouterInterface $router,
         private readonly LoggerInterface $logger,
-        protected Inspector $inspector,
-        #[Autowire('%env(BASE_HOST)%')] private ?string $baseHost=null,
+        protected ?Inspector $inspector=null,
     ) {
     }
 
@@ -50,10 +34,8 @@ class BeforeRequestListener
         // check the IP
         $request = $event->getRequest();
         $ip = $request->getClientIp();
-        $blacklisted = $this->blacklistManager->isBlacklisted($ip, 'ip');
+        $blacklisted = $this->kvManager->has($ip, 'ip');
         $bot = $event->getRequest()->headers->get('User-Agent');
-//        dd($ip, $blacklisted, $bot);
-
 
         // https://symfonycasts.com/screencast/question-answer-day/symfony2-dynamic-subdomains
         $path = $request->getPathInfo();

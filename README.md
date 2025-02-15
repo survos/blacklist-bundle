@@ -1,6 +1,38 @@
 # BadBotBundle
 
-Flexible bundle to handle bad bots
+If you visit a link likely to be a bot probing the site for weakness, you'll be banned!
+
+## How it works
+
+* At the beginning of every request, check if the IP is marked as banned and block it if is.  
+* At the end of every request that returns a 404, if the path is a likely bad bot path, add the IP to the banned list.
+* The banned IP list can either be in the application cache (fast and will reset after a configurable time) or persisted in a key value list.
+
+The key/value bundle stores the following:
+
+* probe_paths: e.g. phpinfo, wp-admin
+* banned_ip: (optional) list of banned IPs (if we want to persist them)
+
+Idea: BadBotServer, to track banned IPs, probe paths, user-agents, etc.
+
+
+$kvManager->add('banned_ips', $ip);
+OR
+```php
+$ip = $cache->get('banned_ips_' . $ip), function (ItemCache) {
+    // set the timeout
+}
+
+
+In BeforeRequestListener:
+
+Check the banned IP list (either via the cache)
+
+```php
+if ($cache->has('banned_ips_' . $ip)) {
+    // abort the request
+}
+```
 
 Highly inspired by  lsbproject/blacklist-bundle https://github.com/AntoineLemaire/BlacklistBundle
 
